@@ -2,23 +2,43 @@ app.controller('ListController', ['$scope','ListService',function($scope,details
 
 	details.success(function(data){
 		$scope.details = data;
-    document.addEventListener("deviceready", function () {
 
-      $rootScope.$on('$cordovaBatteryStatus:status', function (result) {
-        var batteryLevel = result.level;       // (0 - 100)
-        var isPluggedIn  = result.isPlugged;   // bool
-      });
+//emailcomposer
+    angular.app('ngCordova.plugins.emailComposer', [])
 
-      $rootScope.$on('$cordovaBatteryStatus:critical', function (result) {
-        var batteryLevel = result.level;       // (0 - 100)
-        var isPluggedIn  = result.isPlugged;   // bool
-      });
+      .factory('$cordovaEmailComposer', ['$q', function ($q) {
 
-      $rootScope.$on('$cordovaBatteryStatus:low', function (result) {
-        var batteryLevel = result.level;       // (0 - 100)
-        var isPluggedIn  = result.isPlugged;   // bool
-      });
+        return {
+          isAvailable: function () {
+            var q = $q.defer();
 
-    }, false);
+            cordova.plugins.email.isAvailable(function (isAvailable) {
+              if (isAvailable) {
+                q.resolve();
+              } else {
+                q.reject();
+              }
+            });
+
+            return q.promise;
+          },
+
+          open: function (properties) {
+            var q = $q.defer();
+
+            cordova.plugins.email.open(properties, function () {
+              q.reject(); // user closed email composer
+            });
+
+            return q.promise;
+          },
+
+          addAlias: function (app, schema) {
+            cordova.plugins.email.addAlias(app, schema);
+          }
+        };
+      }]);
+
+
 	})
 } ]);
