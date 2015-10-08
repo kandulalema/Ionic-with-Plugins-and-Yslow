@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/www/js/Controllers/BackgroundGeoloc.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/js/Controllers/BatteryStatus.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/js/Controllers/ListController.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/js/Controllers/ProgressController.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/js/Controllers/location.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/js/app.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/templates/courses.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/templates/listofcourses.html" charset="UTF-8" />
+  </component>
+</project>
